@@ -3,10 +3,10 @@ package be.vdab.repositories;
 import java.math.BigDecimal;
 
 public class KostRepositoryStub implements KostRepository {
-
+	
+	@Override
 	public BigDecimal findTotaleKost() {
-		// TODO Auto-generated method stub
-		return null;
+		return BigDecimal.valueOf(200);
 	}
 
 }
