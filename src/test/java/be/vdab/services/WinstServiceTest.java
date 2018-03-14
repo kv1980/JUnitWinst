@@ -7,10 +7,12 @@ import java.math.BigDecimal;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.mockito.Mockito.mock;     // static niet vergeten!!!!!!!!!!!
+import static org.mockito.Mockito.when; 
+import static org.mockito.Mockito.verify;
+
 import be.vdab.repositories.KostRepository;
-import be.vdab.repositories.KostRepositoryStub;
 import be.vdab.repositories.OpbrengstRepository;
-import be.vdab.repositories.OpbrengstRepositoryStub;
 
 public class WinstServiceTest {
 	private KostRepository kostRepository;
@@ -19,13 +21,17 @@ public class WinstServiceTest {
 
 	@Before
 	public void before() {
-		kostRepository = new KostRepositoryStub();
-		opbrengstRepository = new OpbrengstRepositoryStub();
+		kostRepository = mock(KostRepository.class);
+		when(kostRepository.findTotaleKost()).thenReturn(BigDecimal.valueOf(200));
+		opbrengstRepository = mock(OpbrengstRepository.class);
+		when(opbrengstRepository.findTotaleOpbrengst()).thenReturn(BigDecimal.valueOf(2000));
 		winstService = new WinstService(kostRepository, opbrengstRepository);
 	}
 
 	@Test
-	public void berekenWinst() {
+	public void getWinst() {
 		assertEquals(0, BigDecimal.valueOf(1800).compareTo(winstService.getWinst()));
+		verify(kostRepository).findTotaleKost();
+		verify(opbrengstRepository).findTotaleOpbrengst();
 	}
 }
