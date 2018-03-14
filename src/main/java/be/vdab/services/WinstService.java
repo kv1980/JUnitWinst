@@ -15,6 +15,6 @@ public class WinstService {
 	}
 	
 	public BigDecimal getWinst() {
-		throw  new UnsupportedOperationException();
+		return opbrengstRepository.findTotaleOpbrengst().subtract(kostRepository.findTotaleKost());
 	}
 }
