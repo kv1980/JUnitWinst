@@ -1,18 +1,15 @@
 package be.vdab.services;
 
-import static org.junit.Assert.assertEquals;
-
 import java.math.BigDecimal;
-
+import be.vdab.repositories.KostRepository;
+import be.vdab.repositories.OpbrengstRepository;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.mockito.Mockito.mock;     // static niet vergeten!!!!!!!!!!!
-import static org.mockito.Mockito.when; 
+import static org.junit.Assert.assertEquals; // static niet vergeten!!!!!!!!!!!
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 import static org.mockito.Mockito.verify;
-
-import be.vdab.repositories.KostRepository;
-import be.vdab.repositories.OpbrengstRepository;
 
 public class WinstServiceTest {
 	private KostRepository kostRepository;
